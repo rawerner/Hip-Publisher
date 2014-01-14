@@ -13,13 +13,10 @@ I want to see reports on the various songwriters and their musical catalog for m
 
 ## Feature List:
 
-I can enter in Songs, Writers and Publisher Info to database.
-
-I can update incorrect information if stored incorrectly.
-
-I can remove a Song, Writer or Publisher.
-
-I can query various reports on Songs, Writers & Publishers.
+- User can enter in Songs, Writers and Publisher Info to database.
+- User can update incorrect information if stored incorrectly.
+- User can remove a Song, Writer or Publisher.
+- User can query various reports on Songs, Writers & Publishers.
 
 
 ## Interesting Queries
@@ -32,3 +29,4 @@ I can query various reports on Songs, Writers & Publishers.
 
 ## Data Sources
 
+- Possibly ASCAP or Do Right Music
