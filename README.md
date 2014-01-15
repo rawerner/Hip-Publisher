@@ -21,12 +21,12 @@ I want to see reports on the various songwriters and their musical catalog for m
 
 ## Interesting Queries
 
-- Queries a songwriter song catalog for information that is missing.(Info the writer still needs to submit to publisher)
-- Queries songs that where written in a certain contract period and their songwriter portion percentage.
+- Queries a songwriter song catalog for information that is missing. (Info the writer still needs to submit to publisher)
+- Queries songs that were written in a certain contract period and their songwriter portion percentage.
 - Queries songs that a writer wrote with a particular co-writer.
 - Queries Publisher info for a certain songwriter.
 
 
 ## Data Sources
 
-- Possibly ASCAP or Do Right Music
+- Rainy Graham Publishing will provide all their excel sheets that track their writers' calatogs. (Small catalog or 4 writers, but many cowriters)
