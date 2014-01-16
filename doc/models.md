@@ -20,6 +20,7 @@ Worktape: varchar(3)
 Lyrics: varchar(3)  
 Demo: varchar(3)  
 Songwriters: int  
+WriterShare: float(4)
 
 **Affiliations**  
 AffilationID: int  
