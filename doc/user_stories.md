@@ -1,10 +1,9 @@
 User Stories
 =============
 
-## Creating new records in the databse
+## Creating new records in the datbase
 
-###As a Publisher I want to be able to add new songwriters to the database so that I
-can run reports on their music catlog.
+###As a Publisher I want to be able to add new songwriters to the database so that I can run reports on their music catlog.
 
 Usage: ./hippublisher addWriter "FirstName" "LastName"
 
@@ -14,8 +13,7 @@ Acceptance Criteria:
 * At the end it shows all the data inputed for writer and a prompt to confirm.
 
 
-###As a Publisher I want to be able to add new songs to the database so that I
-can run reports on the music information.
+###As a Publisher I want to be able to add new songs to the database so that I can run reports on the music information.
 
 Usage: ./hippublisher addSong "Title"
 
@@ -25,8 +23,7 @@ Acceptance Criteria:
 * At the end it shows all the song data inputed for song and a prompt to confirm.
 
 
-###As a Publisher I want to be able to add new Publishers to the database so that I
-I an run a search on a co-writer's publishing company.
+###As a Publisher I want to be able to add new Publishers to the database so that I can run a search on a co-writer's publishing company.
 
 Usage: ./hippublisher addPublisher "PublisherName"
 
@@ -43,4 +40,4 @@ Acceptance Criteria:
 ## Deleting records in the database
 
 
-## Reading records fromthe database
+## Reading records from the database
