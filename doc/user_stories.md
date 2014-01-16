@@ -3,7 +3,7 @@ User Stories
 
 ## Creating new records in the datbase
 
-1. As a Publisher I want to be able to add new songwriter to the database so that I can run reports on their music catlog.
+#####As a Publisher I want to be able to add new songwriter to the database so that I can run reports on their music catlog.
 
 Usage: ./hippublisher addWriter "FirstName" "LastName"
 
@@ -13,7 +13,7 @@ Acceptance Criteria:
 * At the end it shows all the data inputed for writer and a prompt to confirm correct.
 
 
-2. As a Publisher I want to be able to add new songs to the database so that I can run reports on the music information.
+#####As a Publisher I want to be able to add new songs to the database so that I can run reports on the music information.
 
 Usage: ./hippublisher addSong "Title"
 
@@ -23,7 +23,7 @@ Acceptance Criteria:
 * At the end it shows all the song data inputed for song and a prompt to confirm correct.
 
 
-3. As a Publisher I want to be able to add new Publishers to the database so that I can run a search on a co-writer's publishing company.
+#####As a Publisher I want to be able to add new Publishers to the database so that I can run a search on a co-writer's publishing company.
 
 Usage: ./hippublisher addPublisher "PublisherName"
 
@@ -36,7 +36,7 @@ Acceptance Criteria:
 
 ## Updating records in the database
 
-4. As a Publisher I want to be able to update existing songwriter records so that I can have current information on them.
+#####As a Publisher I want to be able to update existing songwriter records so that I can have current information on them.
 
 Usage: ./hippublisher editWriter "FirstName" "LastName"
 
@@ -45,7 +45,7 @@ Acceptance Criteria:
 * Prints songwriter record and then prompts which field to edit.
 
 
-5. As a Publisher I want to be able to update existing song records so that I can have current information on them.
+#####As a Publisher I want to be able to update existing song records so that I can have current information on them.
 
 Usage: ./hippublisher editSong "Title"
 
@@ -54,7 +54,7 @@ Acceptance Criteria:
 * Prints song record and then prompts which field to edit.
 
 
-6. As a Publisher I want to be able to update an existing publisher records so that I can have current information on them.
+#####As a Publisher I want to be able to update an existing publisher records so that I can have current information on them.
 
 Usage: ./hippublisher editPublisher "PublisherName"
 
@@ -66,7 +66,7 @@ Acceptance Criteria:
 
 ## Deleting records in the database
 
-7. As a Publisher I want to be able to delete an existing songwriter record
+#####As a Publisher I want to be able to delete an existing songwriter record
 
 Usage: ./hippublisher deleteWriter "FirstName" "LastName"
 
@@ -75,7 +75,7 @@ Acceptance Criteria:
 * Prints songwriter record and then prompts to confirm delete
 
 
-8. As a Publisher I want to be able to delete an existing song record
+#####As a Publisher I want to be able to delete an existing song record
 
 Usage: ./hippublisher deleteSong "Title"
 
@@ -84,7 +84,7 @@ Acceptance Criteria:
 * Prints song record and then prompts to confirm delete
 
 
-9. As a Publisher I want to be able to delete an existing publisher records
+#####As a Publisher I want to be able to delete an existing publisher records
 
 Usage: ./hippublisher deletePublisher "PublisherName"
 
@@ -93,4 +93,14 @@ Acceptance Criteria:
 * Prints publisher record and then prompts to confirm delete
 
 
-## Reading records from the database
+
+## Reading records from the database (Creating Reports)
+
+#####As a Publisher I want to dig into a songwriter's catalog and create a report of all the songs that are missing information so that I know what I need them to still submit to me for updating later.
+
+Usage: ./hippublisher missing "FirstName" "LastName"
+
+Acceptance Criteria:
+* Asks for first and last name of songwriter to delete songwriter
+* Prints songwriter record and then prompts to confirm delete
+
