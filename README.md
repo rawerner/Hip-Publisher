@@ -29,4 +29,4 @@ I want to see reports on the various songwriters and their musical catalog for m
 
 ## Data Sources
 
-- A publishing company has provided their music catalog via .xlsx files. I will need to parse it to reformat fields and tables. Here is a link to an example of one of therisongwriter's catalog worksheets [here] (https://github.com/rawerner/Hip-Publisher/tree/master/data)
+- A publishing company has provided their music catalog via .xlsx files. I will need to parse it to reformat fields and tables. Here is a link to an example of one of their songwriter's catalog worksheets [here](https://github.com/rawerner/Hip-Publisher/tree/master/data)
