@@ -21,6 +21,6 @@ Lyrics: varchar(3)
 Demo: varchar(3)  
 Songwriters: int  
 
-**Affiliations**
+**Affiliations**  
 AffilationID: int  
 Name: varchar(30)  
