@@ -24,7 +24,7 @@ I want to see reports on the various songwriters and their musical catalog for m
 - Queries a songwriter song catalog for information that is missing. (Info the writer still needs to submit to publisher)
 - Queries songs that were written in a certain contract period and their songwriter portion percentage.
 - Queries songs that a writer wrote with a particular co-writer.
-- Queries Publisher info for a certain songwriter.
+- Queries Publisher info for a certain song.
 
 
 ## Data Sources

@@ -1,9 +1,9 @@
 User Stories
 =============
 
-## Creating new records in the datbase
+## Creating new records in the database
 
-#####As a Publisher I want to be able to add new songwriter to the database so that I can run reports on their music catlog.
+#####As a Publisher I want to be able to add a new songwriter to the database so that I can run reports on their music catalog.
 
 Usage: ./hippublisher addWriter "FirstName" "LastName"
 
@@ -13,7 +13,7 @@ Acceptance Criteria:
 * At the end it shows all the data inputed for writer and a prompt to confirm correct.
 
 
-#####As a Publisher I want to be able to add new songs to the database so that I can run reports on the music information.
+#####As a Publisher I want to be able to add a new song to the database so that I can run reports on the music catalog.
 
 Usage: ./hippublisher addSong "Title"
 
@@ -94,6 +94,7 @@ Acceptance Criteria:
 
 
 
+
 ## Reading records from the database (Creating Reports)
 
 #####As a Publisher I want to dig into a songwriter's catalog and create a report of all the songs that are missing information so that I know what I need them to still submit to me for updating later.
@@ -101,6 +102,38 @@ Acceptance Criteria:
 Usage: ./hippublisher missing "FirstName" "LastName"
 
 Acceptance Criteria:
-* Asks for first and last name of songwriter to delete songwriter
-* Prints songwriter record and then prompts to confirm delete
+* Prints out songs missing data grouped by field type missing.
+
+
+#####As a Publisher I want to dig into a songwriter's catalog and create a report of all the songs in a particular range of dates. Knowing this information will help me know what songs were completed within a particular contract period.
+
+Usage: ./hippublisher range "1 2008" "1 2009"
+
+Acceptance Criteria:
+* Prints out songs created with in a certain date range.
+
+
+#####As a Publisher I want to dig into a songwriter's catalog and create a report of all their songs
+
+Usage: ./hippublisher catalog "FirstName" "LastName"
+
+Acceptance Criteria:
+* Prints out song catalog of songwriter inputed.
+
+
+#####As a Publisher I want to dig into a songwriter's catalog and create a report of all the songs that were written with a particular co-writer.
+
+Usage: ./hippublisher coWrite "FirstName" "LastName"
+
+Acceptance Criteria:
+* Asks for Songwriter Name, then prompts for co-writer name
+* Prints out song catalog of songs written between the two writers
+
+
+#####As a Publisher I want to find out which publishers belong to a song.
+
+Usage: ./hippublisher songPublishers "SongTitle"
+
+Acceptance Criteria:
+* Prints out publishers that own the particular song queried
 
