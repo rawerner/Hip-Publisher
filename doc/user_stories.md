@@ -5,7 +5,7 @@ User Stories
 ## Creating new records in the database
 
 <pre>
-#####As a Publisher I want to be able to add a new songwriter to the database so that I can run reports on their music catalog.
+As a Publisher I want to be able to add a new songwriter to the database so that I can run reports on their music catalog.
 
 Usage: ./hippublisher addWriter "FirstName" "LastName"
 
@@ -16,7 +16,7 @@ Acceptance Criteria:
 </pre>
 
 <pre>
-#####As a Publisher I want to be able to add a new song to the database so that I can run reports on the music catalog.
+As a Publisher I want to be able to add a new song to the database so that I can run reports on the music catalog.
 
 Usage: ./hippublisher addSong "Title"
 
@@ -27,7 +27,7 @@ Acceptance Criteria:
 </pre>
 
 <pre>
-#####As a Publisher I want to be able to add new Publishers to the database so that I can run a search on a co-writer's publishing company.
+As a Publisher I want to be able to add new Publishers to the database so that I can run a search on a co-writer's publishing company.
 
 Usage: ./hippublisher addPublisher "PublisherName"
 
@@ -40,7 +40,7 @@ Acceptance Criteria:
 
 ## Updating records in the database
 <pre>
-#####As a Publisher I want to be able to update existing songwriter records so that I can have current information on them.
+As a Publisher I want to be able to update existing songwriter records so that I can have current information on them.
 
 Usage: ./hippublisher editWriter "FirstName" "LastName"
 
@@ -50,7 +50,7 @@ Acceptance Criteria:
 </pre>
 
 <pre>
-#####As a Publisher I want to be able to update existing song records so that I can have current information on them.
+As a Publisher I want to be able to update existing song records so that I can have current information on them.
 
 Usage: ./hippublisher editSong "Title"
 
@@ -60,7 +60,7 @@ Acceptance Criteria:
 </pre>
 
 <pre>
-#####As a Publisher I want to be able to update an existing publisher records so that I can have current information on them.
+As a Publisher I want to be able to update an existing publisher records so that I can have current information on them.
 
 Usage: ./hippublisher editPublisher "PublisherName"
 
@@ -72,7 +72,7 @@ Acceptance Criteria:
 
 ## Deleting records in the database
 <pre>
-#####As a Publisher I want to be able to delete an existing songwriter record
+As a Publisher I want to be able to delete an existing songwriter record
 
 Usage: ./hippublisher deleteWriter "FirstName" "LastName"
 
@@ -82,7 +82,7 @@ Acceptance Criteria:
 </pre>
 
 <pre>
-#####As a Publisher I want to be able to delete an existing song record
+As a Publisher I want to be able to delete an existing song record
 
 Usage: ./hippublisher deleteSong "Title"
 
@@ -92,7 +92,7 @@ Acceptance Criteria:
 </pre>
 
 <pre>
-#####As a Publisher I want to be able to delete an existing publisher records
+As a Publisher I want to be able to delete an existing publisher records
 
 Usage: ./hippublisher deletePublisher "PublisherName"
 
@@ -104,7 +104,7 @@ Acceptance Criteria:
 
 ## Reading records from the database (Creating Reports)
 <pre>
-#####As a Publisher I want to dig into a songwriter's catalog and create a report of all the songs that are missing information so that I know what I need them to still submit to me for updating later.
+As a Publisher I want to dig into a songwriter's catalog and create a report of all the songs that are missing information so that I know what I need them to still submit to me for updating later.
 
 Usage: ./hippublisher missing "FirstName" "LastName"
 
@@ -113,7 +113,7 @@ Acceptance Criteria:
 </pre>
 
 <pre>
-#####As a Publisher I want to dig into a songwriter's catalog and create a report of all the songs in a particular range of dates. Knowing this information will help me know what songs were completed within a particular contract period.
+As a Publisher I want to dig into a songwriter's catalog and create a report of all the songs in a particular range of dates. Knowing this information will help me know what songs were completed within a particular contract period.
 
 Usage: ./hippublisher range "1 2008" "1 2009"
 
@@ -122,7 +122,7 @@ Acceptance Criteria:
 </pre>
 
 <pre>
-#####As a Publisher I want to dig into a songwriter's catalog and create a report of all their songs
+As a Publisher I want to dig into a songwriter's catalog and create a report of all their songs
 
 Usage: ./hippublisher catalog "FirstName" "LastName"
 
@@ -131,7 +131,7 @@ Acceptance Criteria:
 </pre>
 
 <pre>
-#####As a Publisher I want to dig into a songwriter's catalog and create a report of all the songs that were written with a particular co-writer.
+As a Publisher I want to dig into a songwriter's catalog and create a report of all the songs that were written with a particular co-writer.
 
 Usage: ./hippublisher coWrite "FirstName" "LastName"
 
@@ -141,7 +141,7 @@ Acceptance Criteria:
 </pre>
 
 <pre>
-#####As a Publisher I want to find out which publishers belong to a song.
+As a Publisher I want to find out which publishers belong to a song.
 
 Usage: ./hippublisher songPublishers "SongTitle"
 
