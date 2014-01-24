@@ -18,5 +18,3 @@ CreationDate: timestamp
 Worktape: varchar(3)
 Lyrics: varchar(3)
 Demo: varchar(3)
-
-
