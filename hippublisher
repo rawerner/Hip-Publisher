@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require_relative 'lib/environment'
+require_relative 'lib/parse_arguments'
+
+command = ARGV[0]
+options = ParseArguments.parse
+
+#if command == "start"
+
+database = Environment.database_connection(options[:environment])
+
+if command == "search"
+  puts "What do you want to search for?"
+  input = $stdin.gets.chomp
+  puts "You asked for: #{input}"
+  database.execute("select songwriter.fname from songwriters where fname LIKE '%#{input}%'")
+  #searching!
+else
+  error_messages = ParseArguments.validate(options)
+    if error_messages.empty?
+      # This is ripe for a SQL injection attack:
+      statement = "insert into songwriters(fname, lname, publisher) values('#{options[:fname]}', '#{options[:lname]}', '#{options[:publisher]}')"
+      database.execute(statement)
+      puts "A songwriter named #{options[:fname]} " + "#{options[:lname]}, with a publisher called #{options[:publisher]} was created."
+    else
+      puts error_messages
+    end
+end
+

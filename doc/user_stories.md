@@ -10,9 +10,10 @@ As a Publisher I want to be able to add a new songwriter to the database so that
 Usage: ./hippublisher addWriter "FirstName" "LastName"
 
 Acceptance Criteria:
-* Asks for first and last name of songwriter to begin adding writer.
+* Asks for first and last name of songwriter, publisher name and affiliation to begin adding writer.
 * Prints out a series of questions about the songwriter
 * At the end it shows all the data inputed for writer and a prompt to confirm correct.
+* Saves to database
 </pre>
 
 <pre>
