@@ -1,30 +1,61 @@
 #!/usr/bin/env ruby
 
 require_relative 'lib/environment'
-require_relative 'lib/parse_arguments'
+require_relative 'lib/argument_parser'
+require_relative 'lib/interactions'
 
-command = ARGV[0]
-options = ParseArguments.parse
 
-#if command == "start"
+# Router:
+class HipPublisher
+  include Interactions
+  attr_reader :options
 
-database = Environment.database_connection(options[:environment])
+  def initialize
+    @options = ArgumentParser.parse
+    Environment.environment = @options[:environment] || "production"
+  end
 
-if command == "search"
-  puts "What do you want to search for?"
-  input = $stdin.gets.chomp
-  puts "You asked for: #{input}"
-  database.execute("select songwriter.fname from songwriters where fname LIKE '%#{input}%'")
-  #searching!
-else
-  error_messages = ParseArguments.validate(options)
-    if error_messages.empty?
-      # This is ripe for a SQL injection attack:
-      statement = "insert into songwriters(fname, lname, publisher) values('#{options[:fname]}', '#{options[:lname]}', '#{options[:publisher]}')"
-      database.execute(statement)
-      puts "A songwriter named #{options[:fname]} " + "#{options[:lname]}, with a publisher called #{options[:publisher]} was created."
+  def main
+    database = Environment.database_connection
+
+    if options[:command] == "search"
+          search_term = ask("What do you want to search for?")
+          search_songwriters_for(search_term)
+    elsif @options[:command] == "addWriter"
+      error_messages = ArgumentParser.validate(options)
+      if error_messages.empty?
+        songwriter = Songwriter.new(options)
+        songwriter.save
+        puts "Songwriter #{options[:name]} was created."
+      else
+        puts error_messages
+      end
+    elsif options[:command] == "list"
+      list_songwriters()
+    elsif options[:command] == "edit"
+      if songwriter = Songwriter.find(options[:id])
+        songwriter.update(options)
+        puts "Songwriter #{songwriter.id} is now named #{songwriter.name}"
+      else
+        puts "Songwriter #{options[:id]} couldn't be found."
+      end
     else
-      puts error_messages
+      puts "Command not implemented"
     end
+  end
+
+  def list_songwriters()
+    puts "All Songwriters:"
+    puts Songwriter.all
+  end
+
+  def search_songwriters_for(search_term)
+    puts "You asked for: #{search_term}"
+    puts Songwriter.search(search_term)
+  end
+
+
 end
 
+hippublisher = HipPublisher.new()
+hippublisher.main()

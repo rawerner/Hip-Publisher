@@ -10,21 +10,23 @@ end
 desc "Run tests"
 task :default => :test
 
-desc "Production Database"
+desc 'create the production database setup'
 task :bootstrap_database do
-  require 'sqlite3'
-  database = Environment.database_connection("production")
+  Environment.environment = "production"
+  database = Environment.database_connection
   create_tables(database)
 end
 
-desc "Test Database"
+desc 'prepare the test database'
 task :test_prepare do
   require 'sqlite3'
   File.delete("db/hippublisher_test.sqlite3")
-  database = Environment.database_connection("test")
+  Environment.environment = "test"
+  database = Environment.database_connection
   create_tables(database)
 end
 
 def create_tables(database_connection)
-  database_connection.execute("CREATE TABLE songwriters (id INTEGER PRIMARY KEY AUTOINCREMENT, fname varchar(50), lname varchar(50), publisher varchar(50))")
+  database_connection.execute("CREATE TABLE songwriters (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(80))")
+  # database_connection.execute("CREATE TABLE publishers (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(80))")
 end

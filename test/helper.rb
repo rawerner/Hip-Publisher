@@ -2,8 +2,13 @@ require 'minitest/autorun'
 require_relative '../lib/environment'
 
 class HipPublisherTest < MiniTest::Unit::TestCase
-  def database
-    Environment.database_connection("test")
+
+  def setup
+    Environment.environment = "test"
+  end
+
+   def database
+    Environment.database_connection
   end
 
   def teardown
