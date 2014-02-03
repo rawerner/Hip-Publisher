@@ -61,14 +61,41 @@ class HipPublisher
   end
 
   def add_song
-    error_messages = ArgumentParser.validate(options)
+    error_messages = ArgumentParser.validateSong(options)
     if error_messages.empty?
       song = Song.new(options)
       song.save
+      puts "Please add songwriters names seperated by ,"
+      view_all_songwriters
+      songwriters = $stdin.gets
+      songwriters = songwriters.split(", ")
+      songwriters.map! do |writer|
+        songwriter = Songwriter.find_or_create(writer)
+      end
+      database = Environment.database_connection
+      songwriters.each do |writer|
+        database.execute("insert into songsongwriters(song_id, songwriter_id) values(#{song.id}, #{writer.id})")
+      end
       puts "The song '#{song.title}' was added to the catalog"
     else
       puts error_messages.join(" ")
     end
+  end
+
+  def add_writer
+    error_messages = ArgumentParser.validateSongwriter(options)
+    if error_messages.empty?
+      songwriter = Songwriter.new(options[:name])
+      songwriter.saveSongwriter
+      puts "Songwriter #{songwriter.name} was created."
+    else
+      puts error_messages.join(" ")
+    end
+  end
+
+   def view_all_songwriters()
+    puts "All Songwriters by ID:"
+    puts Songwriter.all
   end
 
   def edit_song

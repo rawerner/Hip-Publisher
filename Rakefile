@@ -37,6 +37,6 @@ def create_tables(database_connection)
   database_connection.execute("CREATE TABLE songs (id INTEGER PRIMARY KEY AUTOINCREMENT, title varchar(100), creationdate varchar(10), haslyrics varchar(3), hasworktape varchar(3))")
   database_connection.execute("CREATE TABLE songsongwriters (song_id INTEGER FORIEGN KEY, songwriter_id INTEGER FORIEGN KEY)")
   database_connection.execute("CREATE TABLE songwriters (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(80))")
-  database_connection.execute("CREATE TABLE songpublisher (song_id INTEGER FORIEGN KEY, publisher_id INTEGER FORIEGN KEY)")
+  database_connection.execute("CREATE TABLE songpublishers (song_id INTEGER FORIEGN KEY, publisher_id INTEGER FORIEGN KEY)")
   database_connection.execute("CREATE TABLE publishers (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(80))")
 end
