@@ -18,3 +18,9 @@ CreationDate: timestamp
 Worktape: varchar(3)
 Lyrics: varchar(3)
 Demo: varchar(3)
+
+
+
+ruby test/test_editing_song.rb --name test_attempting_to_update_with_no_changes
+
+ruby test/test_listing_song.rb --name test_list_returns_relevant_results

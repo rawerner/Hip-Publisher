@@ -12,11 +12,22 @@ class HipPublisherTest < MiniTest::Unit::TestCase
   end
 
   def teardown
-    database.execute("delete from songwriters")
+    database.execute("delete from songs")
+    # database.execute("delete from songwriters")
+  end
+
+  def execute_popen command
+    shell_output = ""
+    IO.popen("#{command} --environment test", 'r+') do |pipe|
+      pipe.puts ""
+      shell_output = pipe.read
+    end
+    shell_output
   end
 
   def assert_command_output expected, command
-    actual = `#{command} --environment test`.strip
+    shell_output = execute_popen(command)
+    actual = shell_output.strip.split("\n").last
     assert_equal expected, actual
   end
 
@@ -35,4 +46,10 @@ class HipPublisherTest < MiniTest::Unit::TestCase
       assert !output.include?(argument), "Output shouldn't include #{argument}: #{output}"
     end
   end
+
+  # def assert_includes_in_order(actual, *expected_items)
+  #   regexp_string = expected_items.join(".*").gsub("?","\\?").gsub("$", "\\$")
+  #   assert_match /#{regexp_string}/, actual.delete("\n"), "Expected /#{regexp_string}/ to match:\n\n" + actual
+  # end
+
 end

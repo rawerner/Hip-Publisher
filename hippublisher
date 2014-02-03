@@ -3,6 +3,7 @@
 require_relative 'lib/environment'
 require_relative 'lib/argument_parser'
 require_relative 'lib/interactions'
+require_relative 'lib/start'
 
 
 # Router:
@@ -18,44 +19,97 @@ class HipPublisher
   def main
     database = Environment.database_connection
 
-    if options[:command] == "search"
-          search_term = ask("What do you want to search for?")
-          search_songwriters_for(search_term)
-    elsif @options[:command] == "addWriter"
-      error_messages = ArgumentParser.validate(options)
-      if error_messages.empty?
-        songwriter = Songwriter.new(options)
-        songwriter.save
-        puts "Songwriter #{options[:name]} was created."
+    if options[:command] == "start"
+        startmessage()
+      elsif options[:command] == "addSong"
+        add_song()
+      elsif options[:command] == "addWriter"
+        add_writer()
+      elsif options[:command] == "viewAll"
+        view_all_songs()
+      elsif options[:command] == "viewSong"
+        songname = options[:name]
+        view_song(songname)
+      elsif options[:command] == "viewSongsBy"
+        writername = options[:name]
+        view_songs_by(writername)
+      elsif options[:command] == "missing"
+        missing_song_data()
+      elsif options[:command] == "editSong"
+        edit_song
+      elsif options[:command] == "deleteSong"
+        delete_song()
       else
-        puts error_messages
-      end
-    elsif options[:command] == "list"
-      list_songwriters()
-    elsif options[:command] == "edit"
-      if songwriter = Songwriter.find(options[:id])
-        songwriter.update(options)
-        puts "Songwriter #{songwriter.id} is now named #{songwriter.name}"
-      else
-        puts "Songwriter #{options[:id]} couldn't be found."
-      end
-    else
       puts "Command not implemented"
     end
   end
 
-  def list_songwriters()
-    puts "All Songwriters:"
-    puts Songwriter.all
+
+  def view_all_songs()
+    puts "All Songs:"
+    puts Song.all
   end
 
-  def search_songwriters_for(search_term)
-    puts "You asked for: #{search_term}"
-    puts Songwriter.search(search_term)
+  def view_songs_by(writername)
+    puts "You asked for songs by: #{writername}"
+    puts Song.search(writername)
+  end
+
+  def view_song(songname)
+    puts "You asked for the song: #{songname}"
+    puts Song.search(songname)
+  end
+
+  def add_song
+    error_messages = ArgumentParser.validate(options)
+    if error_messages.empty?
+      song = Song.new(options)
+      song.save
+      puts "The song '#{song.title}' was added to the catalog"
+    else
+      puts error_messages.join(" ")
+    end
+  end
+
+  def edit_song
+    if song = Song.find(options[:id])
+        song.update(options)
+        puts "Song #{song.id} is now titled #{song.title}"
+    else
+        puts "Song #{options[:id]} couldn't be updated."
+    end
   end
 
 
+ def startmessage
+
+      title = <<EOS
+   _   _ _       ____        _     _ _     _
+  | | | (_)_ __ |  _ \\ _   _| |__ | (_)___| |__   ___ _ __
+  | |_| | | '_ \\| |_) | | | | '_ \\| | / __| '_ \\ / _ \\ '__|
+  |  _  | | |_) |  __/| |_| | |_) | | \\__ \\ | | |  __/ |
+  |_| |_|_| .__/|_|    \\__,_|_.__/|_|_|___/_| |_|\\___|_|
+          |_|
+
+  -Keeping better track of what your songwriters submit-
+
+  *Please use the following commands to manage your catalog
+
+  > addSong --title 'Rainy Day' --date '12-13-2013' --haslyrics 'yes' --hasworktape 'no'
+  > addWriter --name 'Abby Boykin'
+  > viewAll
+  > viewSongsBy --name 'Abby Graham'"
+  > missing --name 'Abby Graham'"
+  > editSong --title 'Rainy Day' --date '12-20-2013' --haslyrics 'yes' --hasworktape 'yes'"
+  > deleteSong --title 'Rainy Day' --date '12-20-2013' --haslyrics 'yes' --hasworktape 'yes'"
+
+
+EOS
+    puts title
+  end
 end
+
 
 hippublisher = HipPublisher.new()
 hippublisher.main()
+

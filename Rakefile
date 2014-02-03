@@ -10,6 +10,13 @@ end
 desc "Run tests"
 task :default => :test
 
+desc 'import data from the given file'
+task :import_data do
+  Environment.environment = "production"
+  require_relative 'lib/importer'
+  Importer.import("data/songs.csv")
+end
+
 desc 'create the production database setup'
 task :bootstrap_database do
   Environment.environment = "production"
@@ -27,6 +34,9 @@ task :test_prepare do
 end
 
 def create_tables(database_connection)
+  database_connection.execute("CREATE TABLE songs (id INTEGER PRIMARY KEY AUTOINCREMENT, title varchar(100), creationdate varchar(10), haslyrics varchar(3), hasworktape varchar(3))")
+  database_connection.execute("CREATE TABLE songsongwriters (song_id INTEGER FORIEGN KEY, songwriter_id INTEGER FORIEGN KEY)")
   database_connection.execute("CREATE TABLE songwriters (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(80))")
-  # database_connection.execute("CREATE TABLE publishers (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(80))")
+  database_connection.execute("CREATE TABLE songpublisher (song_id INTEGER FORIEGN KEY, publisher_id INTEGER FORIEGN KEY)")
+  database_connection.execute("CREATE TABLE publishers (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(80))")
 end

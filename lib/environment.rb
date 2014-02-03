@@ -1,5 +1,6 @@
 require_relative 'database'
 require_relative '../models/songwriter'
+require_relative '../models/song'
 require 'logger'
 
 class Environment
