@@ -79,8 +79,8 @@ class HipPublisher
   def view_songs_by()
     puts "Pick a Songwriter"
     puts view_all_songwriters
-    writerID = ask("Which songwriter catalog do you want to view?")
-    puts Song.find(writerID)
+    writerID = ask("Search songwriter catalog by ID")
+    puts Song.writtenby(writerID)
   end
 
   def search_songs_for(search_term)
@@ -155,12 +155,13 @@ class HipPublisher
   > viewAll
   > viewSong  --title 'Best Is Yest To Come'
   > viewSongsBy --name 'Abby Graham'"
-  > missing --name 'Abby Graham'"
-  > editSong --title 'Rainy Day' --date '12-20-2013' --haslyrics 'yes' --hasworktape 'yes'"
+  > missing
+  > editSong --id 10 --title 'Rainy Day' --date '12-20-2013' --haslyrics 'yes' --hasworktape 'yes'"
   > deleteSong --title 'Rainy Day' --date '12-20-2013' --haslyrics 'yes' --hasworktape 'yes'"
 
 
 EOS
+    puts `clear`
     puts title
   end
 end
