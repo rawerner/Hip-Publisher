@@ -29,7 +29,7 @@ class HipPublisher
       elsif options[:command] == "viewSong" #pass
         search_term = ask("What song do you want to view?")
         search_songs_for(search_term)
-      elsif options[:command] == "viewSongsBy"
+      elsif options[:command] == "viewSongsBy" #pass
         view_songs_by()
       elsif options[:command] == "missing" #pass
         missing_song_data()
@@ -43,18 +43,22 @@ class HipPublisher
   end
 
   def missing_song_data()
+    puts "Find a Songwriter's Missing Information"
+    puts view_all_songwriters
+    writerID = ask("Search songwriter catalog by ID")
+    # wname = Songwriter.find(writerID)
     puts "************************************************"
     puts "Songs Missing Creation Date"
     puts "************************************************"
-    puts Song.missingdate
+    puts Song.missingdate(writerID)
     puts "************************************************"
     puts "Songs Missing Lyrics"
     puts "************************************************"
-    puts Song.missinglyrics
+    puts Song.missinglyrics(writerID)
     puts "************************************************"
     puts "Songs Missing Worktape"
     puts "************************************************"
-    puts Song.missingworktape
+    puts Song.missingworktape(writerID)
   end
 
   def delete_song()
@@ -153,8 +157,8 @@ class HipPublisher
   > addSong --title 'Rainy Day' --date '12-13-2013' --haslyrics 'yes' --hasworktape 'no'
   > addWriter --name 'Abby Boykin'
   > viewAll
-  > viewSong  --title 'Best Is Yest To Come'
-  > viewSongsBy --name 'Abby Graham'"
+  > viewSong
+  > viewSongsBy
   > missing
   > editSong --id 10 --title 'Rainy Day' --date '12-20-2013' --haslyrics 'yes' --hasworktape 'yes'"
   > deleteSong --title 'Rainy Day' --date '12-20-2013' --haslyrics 'yes' --hasworktape 'yes'"
