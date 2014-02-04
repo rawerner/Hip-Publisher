@@ -5,7 +5,6 @@ require_relative 'lib/argument_parser'
 require_relative 'lib/interactions'
 require_relative 'lib/start'
 
-
 # Router:
 class HipPublisher
   include Interactions
@@ -21,43 +20,72 @@ class HipPublisher
 
     if options[:command] == "start"
         startmessage()
-      elsif options[:command] == "addSong"
+      elsif options[:command] == "addSong" #pass
         add_song()
-      elsif options[:command] == "addWriter"
+      elsif options[:command] == "addWriter" #pass
         add_writer()
-      elsif options[:command] == "viewAll"
+      elsif options[:command] == "viewAll" #pass
         view_all_songs()
-      elsif options[:command] == "viewSong"
-        songname = options[:name]
-        view_song(songname)
+      elsif options[:command] == "viewSong" #pass
+        search_term = ask("What song do you want to view?")
+        search_songs_for(search_term)
       elsif options[:command] == "viewSongsBy"
-        writername = options[:name]
-        view_songs_by(writername)
-      elsif options[:command] == "missing"
+        view_songs_by()
+      elsif options[:command] == "missing" #pass
         missing_song_data()
-      elsif options[:command] == "editSong"
-        edit_song
-      elsif options[:command] == "deleteSong"
+      elsif options[:command] == "editSong" #pass
+        edit_song()
+      elsif options[:command] == "deleteSong" #pass
         delete_song()
       else
       puts "Command not implemented"
     end
   end
 
+  def missing_song_data()
+    puts "************************************************"
+    puts "Songs Missing Creation Date"
+    puts "************************************************"
+    puts Song.missingdate
+    puts "************************************************"
+    puts "Songs Missing Lyrics"
+    puts "************************************************"
+    puts Song.missinglyrics
+    puts "************************************************"
+    puts "Songs Missing Worktape"
+    puts "************************************************"
+    puts Song.missingworktape
+  end
+
+  def delete_song()
+    puts view_all_songs
+    id = ask("Type a song ID to delete a song")
+    song = Song.find(id)
+    songname = song.title
+    answer = ask("Are you sure you want to delete '#{songname}' (y or n)").downcase
+    if answer == 'y'
+      Song.delete(id)
+      puts "'#{songname}' has been deleted"
+    else
+      puts "'#{songname}' is safe"
+    end
+  end
 
   def view_all_songs()
     puts "All Songs:"
     puts Song.all
   end
 
-  def view_songs_by(writername)
-    puts "You asked for songs by: #{writername}"
-    puts Song.search(writername)
+  def view_songs_by()
+    puts "Pick a Songwriter"
+    puts view_all_songwriters
+    writerID = ask("Which songwriter catalog do you want to view?")
+    puts Song.find(writerID)
   end
 
-  def view_song(songname)
-    puts "You asked for the song: #{songname}"
-    puts Song.search(songname)
+  def search_songs_for(search_term)
+    puts "You asked for the song: #{search_term}"
+    puts Song.searchSong(search_term)
   end
 
   def add_song
@@ -125,6 +153,7 @@ class HipPublisher
   > addSong --title 'Rainy Day' --date '12-13-2013' --haslyrics 'yes' --hasworktape 'no'
   > addWriter --name 'Abby Boykin'
   > viewAll
+  > viewSong  --title 'Best Is Yest To Come'
   > viewSongsBy --name 'Abby Graham'"
   > missing --name 'Abby Graham'"
   > editSong --title 'Rainy Day' --date '12-20-2013' --haslyrics 'yes' --hasworktape 'yes'"

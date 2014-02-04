@@ -114,15 +114,6 @@ Acceptance Criteria:
 </pre>
 
 <pre>
-As a Publisher I want to dig into a songwriter's catalog and create a report of all the songs in a particular range of dates. Knowing this information will help me know what songs were completed within a particular contract period.
-
-Usage: ./hippublisher range "1 2008" "1 2009"
-
-Acceptance Criteria:
-* Prints out songs created with in a certain date range.
-</pre>
-
-<pre>
 As a Publisher I want to dig into a songwriter's catalog and create a report of all their songs
 
 Usage: ./hippublisher catalog "FirstName" "LastName"
@@ -131,15 +122,6 @@ Acceptance Criteria:
 * Prints out song catalog of songwriter inputed.
 </pre>
 
-<pre>
-As a Publisher I want to dig into a songwriter's catalog and create a report of all the songs that were written with a particular co-writer.
-
-Usage: ./hippublisher coWrite "FirstName" "LastName"
-
-Acceptance Criteria:
-* Asks for Songwriter Name, then prompts for co-writer name
-* Prints out song catalog of songs written between the two writers
-</pre>
 
 <pre>
 As a Publisher I want to find out which publishers belong to a song.
