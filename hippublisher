@@ -99,6 +99,7 @@ class HipPublisher
       song.save
       puts "Please add songwriters names seperated by ,"
       view_all_songwriters
+      puts "Please add songwriters names seperated by ,"
       songwriters = $stdin.gets
       songwriters = songwriters.split(", ")
       songwriters.map! do |writer|
@@ -154,14 +155,14 @@ class HipPublisher
 
   *Please use the following commands to manage your catalog
 
-  > addSong --title 'Rainy Day' --date '12-13-2013' --haslyrics 'yes' --hasworktape 'no'
+  > addSong --title 'Rainy Day' --date '12-13-2013' --lyrics 'yes' --worktape 'no'
   > addWriter --name 'Abby Boykin'
   > viewAll
   > viewSong
   > viewSongsBy
   > missing
-  > editSong --id 10 --title 'Rainy Day' --date '12-20-2013' --haslyrics 'yes' --hasworktape 'yes'"
-  > deleteSong --title 'Rainy Day' --date '12-20-2013' --haslyrics 'yes' --hasworktape 'yes'"
+  > editSong --id 10 --title 'Rainy Day' --date '12-20-2013' --lyrics 'yes' --worktape 'yes'"
+  > deleteSong --title 'Rainy Day' --date '12-20-2013' --lyrics 'yes' --worktape 'yes'"
 
 
 EOS
