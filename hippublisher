@@ -37,6 +37,8 @@ class HipPublisher
         edit_song()
       elsif options[:command] == "deleteSong" #pass
         delete_song()
+      # elsif options[:command] == "deleteWriter" #pass
+      #   delete_writer()
       else
       puts "Command not implemented"
     end
@@ -74,6 +76,20 @@ class HipPublisher
       puts "'#{songname}' is safe"
     end
   end
+
+  #   def delete_writer()
+  #   puts view_all_songwriters
+  #   id = ask("Type a songwriter ID to delete a songwriter")
+  #   songwriter = Songwriter.find(id)
+  #   songwritername = songwriter.name
+  #   answer = ask("Are you sure you want to delete '#{songwritername}' (y or n)").downcase
+  #   if answer == 'y'
+  #     Songwriter.delete(id)
+  #     puts "'#{songwritername}' has been deleted"
+  #   else
+  #     puts "'#{songwritername}' is safe"
+  #   end
+  # end
 
   def view_all_songs()
     puts "All Songs:"
@@ -156,13 +172,14 @@ class HipPublisher
   *Please use the following commands to manage your catalog
 
   > addSong --title 'Rainy Day' --date '12-13-2013' --lyrics 'yes' --worktape 'no'
+  > editSong --id 10 --title 'Rainy Day' --date '12-20-2013' --lyrics 'yes' --worktape 'yes'"
+  > deleteSong --title 'Rainy Day' --date '12-20-2013' --lyrics 'yes' --worktape 'yes'"
   > addWriter --name 'Abby Boykin'
   > viewAll
   > viewSong
   > viewSongsBy
   > missing
-  > editSong --id 10 --title 'Rainy Day' --date '12-20-2013' --lyrics 'yes' --worktape 'yes'"
-  > deleteSong --title 'Rainy Day' --date '12-20-2013' --lyrics 'yes' --worktape 'yes'"
+
 
 
 EOS
