@@ -11,7 +11,7 @@ I want to see reports on the various songwriters and their musical catalog for m
 3. Must have 2-3 interesting queries
 
 
-## Feature List:
+## Feature List
 
 - User can enter in Songs, Writers and Publisher Info to database.
 - User can update incorrect information if stored incorrectly.
